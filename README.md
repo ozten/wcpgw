@@ -39,6 +39,8 @@ Error conditions are captured in semantic HTML with metadata.
 This will allow programs to parse them and re-purpose alternatives to
 the WCPGW website.
 
+See [template.html](template.html).
+
 ## License
 
 Please re-mix this guide! [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)
