@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Too many open files - What Could Possibly Go Wrong</title>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel=stylesheet href="../../www/css/stylo.css">
+</head>
+<body>
+<h1>Too many open files</h1>
+<p id="description">Operating Systems limit the total number of files a process can have open.</p>
+<h2>Common Error Codes</h2>
+<ul id="error-codes">
+    <li>EMFILE</li>
+</ul>
+<h2>Troubleshooting</h2>
+<div id="troubleshooting">
+  <h3 class="linux-label">Linux</h3>
+  <div class="linux">
+    <p>If you have the pid of your process,
+you can easily find out how many open file handles it has.
+Assuming we had process 11666,
+the following would print out the number of open files every second.</p>
+
+    <code><pre>
+#!/bin/sh
+while [ 1 ]; do
+    ls /proc/11666/fd | wc
+    sleep 1
+done
+    </pre></code>
+  </div>
+</div>
+<h2>Steps to Reproduce</h2>
+<div id="reproduce">
+  <h3 class="linux-label">Linux</h3>
+  <div class="linux">
+    <p><code>ulimit -n</code> can be used to find the current maximum.
+It can also be used to lower the allowable value,
+so that you process will hit this barrier.</p>
+
+    <p>The following command will lower this value to 20 for the current shell</p>
+    <code><pre>ulimit -n 20</pre></code>
+  </div>
+</div>
+</body>
+</html>
