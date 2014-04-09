@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>headers already sent - What Could Possibly Go Wrong?</title>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel=stylesheet href="../../www/css/stylo.css">
+</head>
+<body>
+<p class="tagline">What Could Possibly Go Wrong?</p>
+<h1>headers already sent</h1>
+<p id="description">Most web frameworks will blow up if you try to set a HTTP
+Header after you have started to send a response body.</p>
+<h2>Common Error Codes</h2>
+<ul id="error-codes">
+    <li>Can't render headers after they are sent to the client.</li>
+    <li>Cannot modify header information - headers already sent</li>
+</ul>
+<h2>Troubleshooting</h2>
+<div id="troubleshooting">
+  <h3 class="general">General</h3>
+  <div class="general">
+    <p>Search through your source code for APIs that directly or indirectly set HTTP headers.
+    Setting the <code>Content-Type</code> on the HTTP response is an obvious example.
+    An indirect one is using libraries that change the session.
+    Session changes probably mean setting the Cookie, which is done via a HTTP header.
+    </p>
+    <p>Another common source of the error is printing to standard out to debug,
+      early in request processing.
+      Search for raw output, instead of proper logging APIs.
+  </div>
+
+  <h3 class="nodejs-label">NodeJS</h3>
+  <div class="nodejs">
+    <h4>APIs that write headers</h4>
+    <code><pre>
+res.setHeader(name, value);
+res.writeHead(statusCode);
+    </pre></code>
+    <h4>APIs that write the body</h4>
+    <code><pre>
+res.write(data);
+res.end(data);
+    </pre></code>
+  </div>
+
+  <h3 class="php-label">PHP</h3>
+  <div class="php">
+    <h4>APIs that write headers</h4>
+    <code><pre>
+header();
+setcookie();
+session_start();
+    </pre></code>
+  </div>
+</div>
+
+<h2>Steps to Reproduce</h2>
+<div id="reproduce">
+  TODO
+</div>
+Filed under <a href="index.html" class="category">web_services</a>
+
+<div id="get-involved">
+  <h2>Get involved</h2>
+  <p>Add an error you've just hit!
+  <a href="https://github.com/ozten/wcpgw">Fork WCPGW</a>.</p>
+  <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+
+</body>
+</html>
