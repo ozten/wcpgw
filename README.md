@@ -1,4 +1,4 @@
-# wcpgw
+# WCPGW
 
 **What Could Possibly Go Wrong** is a catalog of error conditions
 
@@ -11,7 +11,7 @@ May grow into platform or language specific guides also.
 
 Every error can have the following pieces
 
-* Placed into a folder for a specific family of errors (files, network, http, flow, etc)
+* Placed into a folder for a specific family of errors (files, network, http, control flow, etc)
 * Title
 * Common error codes in the wild (can be platform specific)
 * priority in this guide (how frequently does it occur in the wild)
@@ -21,7 +21,7 @@ Every error can have the following pieces
 
 ## Specificity
 
-Here do HTTP GET errors go? They are a network, possibly file and specifically
+Where do HTTP GET errors go? GET requests fit in network, possibly the file category and are also specifically
 an HTTP problem.
 
 Items should be documented at the most general area that makes sense.
@@ -36,7 +36,8 @@ without wading through obscure gopher protocol specific issues.
 
 ## Format
 Error conditions are captured in semantic HTML with metadata.
-This will allow programs to parse them and create easy to use websites.
+This will allow programs to parse them and re-purpose alternatives to
+the WCPGW website.
 
 ## License
 
