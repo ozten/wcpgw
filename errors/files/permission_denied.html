@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Permission Denied - What Could Possibly Go Wrong?</title>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel=stylesheet href="../../www/css/stylo.css">
+</head>
+<body>
+<p class="tagline">What Could Possibly Go Wrong?</p>
+<h1>Permission Denied</h1>
+<p id="description">Open, reading or writing to a file or directory?
+Kind of helps when you have permission to access it :)
+</p>
+<h2>Common Error Codes</h2>
+<ul id="error-codes">
+    <li>EACCES</li>
+</ul>
+
+<div id="troubleshooting">
+  <h3 class="nodejs-label">NodeJS</h3>
+  <div class="nodejs">
+    <p>You can <code>fs.stat</code> a file before operating on it.</p>
+  </div>
+</div>
+
+<h2>Steps to Reproduce</h2>
+<div id="reproduce">
+  <h3 class="nodejs-label">NodeJS</h3>
+  <div class="nodejs">
+    <p>In a shell</p>
+    <code><pre>
+    $ sudo touch unreadable.txt
+    $ sudo chmod 700 unreadable.txt
+    $ node
+    >
+    </pre></code>
+<p>In the NodeJS repl type:
+    <code><pre>
+var fs = require('fs');
+fs.readFile('unreadable.txt', function(err, data) {
+  console.log(err);
+});
+    </pre></code>
+  </div>
+</div>
+Filed under <a href="index.html" class="category">Files</a>
+
+<div id="get-involved">
+  <h2>Get involved</h2>
+  <p>Add an error you've just hit!
+  <a href="https://github.com/ozten/wcpgw">Fork WCPGW</a>.</p>
+  <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+
+</body>
+</html>
